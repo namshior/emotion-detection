@@ -9,7 +9,7 @@ import numpy as np
 import nltk
 nltk.download('punkt')
 from sklearn.datasets import load_files
-#nltk.download('stopwords')
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 from nltk.tokenize import word_tokenize
