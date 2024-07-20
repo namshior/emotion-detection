@@ -21,10 +21,6 @@ from googletrans import Translator
 import warnings
 from topic_modelling import Topic_modeling
 
-from sklearn.exceptions import InconsistentVersionWarning
-
-warnings.filterwarnings(action='ignore',category=InconsistentVersionWarning)
-
 app = Flask(__name__)
 
 #Reading data
