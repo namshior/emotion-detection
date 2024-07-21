@@ -85,7 +85,8 @@ requests==2.32.3
 rfc3986==1.5.0
 rlp==4.0.1
 rpds-py==0.18.1
-scikit-learn==1.5.0
+#scikit-learn==1.5.0
+scikit-learn==1.0.2
 scipy==1.12.0
 setuptools==70.0.0
 six==1.16.0
