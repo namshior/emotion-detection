@@ -110,6 +110,3 @@ yarl==1.9.4
 youtube-dl==2021.12.17
 yt-dlp==2024.7.9
 zopfli==0.2.3
-
-
-cython==0.29.36
