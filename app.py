@@ -168,16 +168,14 @@
 
 
 from random import random
-from xml.parsers.expat import model
 from flask import Flask, render_template, url_for, request
 import pandas as pd 
-from sklearn.externals import joblib  # Use sklearn's joblib for compatibility
+import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 import warnings
 import numpy as np
 import nltk
 nltk.download('punkt')
-from sklearn.datasets import load_files
 nltk.download('stopwords')
 nltk.download('wordnet')
 from nltk.corpus import stopwords
@@ -188,18 +186,20 @@ from nltk.stem import WordNetLemmatizer
 import sqlite3
 from googletrans import Translator
 from topic_modelling import Topic_modeling
+import joblib
 
 app = Flask(__name__)
 
 # Reading data
 translator = Translator()
+
 df = pd.read_csv("data.csv")
 df = df[0:2000]
 
 # Import label encoder
 from sklearn import preprocessing
 
-# Label encoder object knows how to understand word labels.
+# label_encoder object knows how to understand word labels.
 label_encoder = preprocessing.LabelEncoder()
 
 # Encode labels in column 'species'.
@@ -230,9 +230,8 @@ y = df['Emotion']
 
 # Extract Feature With CountVectorizer
 cv = CountVectorizer()
-X = cv.fit_transform(X) # Fit the data
+X = cv.fit_transform(X)  # Fit the Data
 
-# Load the model using sklearn.externals.joblib for compatibility
 model = joblib.load("model.sav")
 
 from sklearn.ensemble import RandomForestClassifier
@@ -253,7 +252,7 @@ def signup():
 
     con = sqlite3.connect('signup.db')
     cur = con.cursor()
-    cur.execute("insert into `detail` (`name`, `number`, `email`, `password`) VALUES (?, ?, ?, ?)", (name, number, email, password))
+    cur.execute("insert into `detail` (`name`,`number`,`email`, `password`) VALUES (?, ?, ?, ?)", (name, number, email, password))
     con.commit()
     con.close()
 
